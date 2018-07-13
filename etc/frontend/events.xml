@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="customer_register_success" instance="Test\Magennest2\Observer\Customer" />
+    </event>
+
+    <!--<event name="checkout_onepage_controller_success_action">-->
+        <!--<observer name="webhive_sps_controller_success_action" instance="Test\Magennest2\Observer\Cart"  />-->
+    <!--</event>-->
+
+    <event name="checkout_cart_product_add_after">
+        <observer name="Tw_Cart_Addtocart_Customprice" instance="Test\Magennest2\Observer\Cart" />
+    </event>
+
+</config>

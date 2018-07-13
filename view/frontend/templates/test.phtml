@@ -1,0 +1,87 @@
+<form id="loginform" method="post">
+    <h2> Vui long nhap ID :</h2>
+    <input type="number" id="idtest" style="width:300px;" placeholder="Nhập id từ 0 đến 30">
+    <input type="submit" id="click" value="submit">
+</form>
+<form id="popup-mpdal" method="post">
+
+</form>
+<script>
+
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Magenest Parttime',
+                buttons: [{
+                    text: $.mage.__('OK'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-mpdal'));
+            $("#click").on('click', function () {
+                $('#loginform').submit(function () {
+                    return false;
+                });
+                var id = $('#idtest').val();
+
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo $block->getUrl('magennest2/ajax/handle') ?>",
+                    data: 'id=' + id,
+                    success: function (data) {
+                        console.log(data)
+                        $('#popup-mpdal').html(data);
+                    }
+                });
+                $("#popup-mpdal").modal("openModal");
+            });
+
+        }
+    );
+
+</script>
+
+<!--<script>-->
+<!--    require(-->
+<!--        [-->
+<!--            'jquery',-->
+<!--            'Magento_Ui/js/modal/modal'-->
+<!--        ],-->
+<!--        function ($,-->
+<!--                  modal) {-->
+<!--            $('#login-form').submit(function () {-->
+<!--                return false;-->
+<!--            });-->
+<!---->
+<!--            var options = {-->
+<!--                type: 'popup',-->
+<!--                responsive: true,-->
+<!--                innerScroll: true,-->
+<!--                title: '',-->
+<!--                buttons: [{-->
+<!--                    text: $.mage.__('Close'),-->
+<!--                    class: '',-->
+<!--                    click: function () {-->
+<!--                        this.closeModal();-->
+<!--                    }-->
+<!--                }]-->
+<!--            };-->
+<!---->
+<!--            var popup = modal(options, $('#popup-mpdal'));-->
+<!--            $("#send2").on('click', function () {-->
+<!--                $("#popup-mpdal").modal("openModal");-->
+<!--            });-->
+<!---->
+<!--        }-->
+<!--    );-->

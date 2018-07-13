@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Test\Magennest2\Block\Adminhtml\Magennest" name="adminhtml.block.magennest.vendor.container">
+                <block class="Test\Magennest2\Block\Adminhtml\Magennest\Grid" name="adminhtml.block.magennest.vendor.grid" as="grid"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
+<!--chus y khi dat ten fodel trong block/adminhhtml/ten folder phai trung ten voi ten folder trong
+    Controller/adminhtml
+-->
